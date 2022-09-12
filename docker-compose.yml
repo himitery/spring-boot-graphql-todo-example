@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - TZ=Asia/Seoul
+      - MYSQL_USER=todo
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=todo
+      - MYSQL_ROOT_PASSWORD=password
+    command:
+      - --lower_case_table_names=1
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
